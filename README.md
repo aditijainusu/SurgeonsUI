@@ -1,5 +1,5 @@
-# SurgeonsUI
-Web Application
+# SurgeonsUI: Web Application: 
+
 It is a simple java web application example with java Servlet on server side providing data.
 
 And client side sending request in AJAX style.Tools used on client side is  HTML5/CSS/JS/Jquery
