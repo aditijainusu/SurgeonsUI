@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" />
+</head>
+<body>
+
+<img src="assignment-banner.png" style="width:100%" >
+<div class="specialty-panel"></div>
+
+<div class="heading-panel">
+    <div class="filter-form">
+        <label class="heading-label">Find a da Vinci Surgeon</label>
+        <br><br>
+        <label class="filter-form-label">Location</label>
+    </div>
+
+    <div class="filter-results-panel">
+        <label class="heading-label">Search Results</label>
+    </div>
+</div>
+
+<div class="filter-form">
+    <input type="text" id="location" style="width:100%">
+    <br><br>
+    <label class="filter-form-label">Surgical Speciality</label>
+    <input name="specialty" list="specialty" class="filter-form-specialty-text-box">
+    <datalist id="specialty">
+    </datalist>
+    <br/>
+    <br>
+    <button type="button" id="filterButton">Search</button>
+</div>
+
+
+<table class="filter-results-panel">
+    <thead><tr>
+        <th>First Name</th><th>Last Name</th><th>City</th>
+        <th>State</th><th>Specialty</th><th>Contact Surgeon</th>
+    </tr></thead>
+    <tbody id="surgeonsTableBody">
+    </tbody>
+</table>
+
+
+
+<script src="jquery/jquery.min.js"></script>
+<script src='scripts/Surgeon.js'></script>
+<script src='scripts/service/Service.js'></script>
+<script src='scripts/model/Model.js'></script>
+<script src='scripts/view/SurgeonView.js'></script>
+<script src='scripts/SurgeonsUI.js'></script>
+</body>
+</html>
