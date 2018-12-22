@@ -2,10 +2,21 @@
  * Created by Aditi Jain on 12/19/18.
  */
 
+/**
+ * SurgeonView
+ * @constructor
+ * SurgeonView deals with all the functionality of web page:
+ */
 function SurgeonView()
 {
     var surgeonModel=new SurgeonModel();
     var service =new Service();
+
+    /**
+     * This function calls service's method to receive data
+     * @param callBack  it is a function, called after receiving surgeon's data
+     *                  from service
+     */
     function getSurgeons(callBack)
     {
         service.getSurgeons(function(data)
@@ -13,10 +24,15 @@ function SurgeonView()
             callBack(data)
         },function(error)
         {
-            alert("error");
+            alert("error : "+error);
         });
     }
 
+    /**
+     * populateModel function calls getSurgeons method and
+     * populate surgeonModel with surgeons and specialties data
+     * and then updates the web page with data.
+     */
     function populateModel()
     {
         getSurgeons(function(surgeons)
@@ -32,13 +48,16 @@ function SurgeonView()
             {
                 return specialties.indexOf(value) === index;
             });
-            alert(surgeonModel.specialties);
             updateSpecialtyList();
             updateSurgeonTable();
 
         });
     }
 
+    /**
+     * updateSpecialityList method populate specialty datalist in search form and
+     * populate Specialty panel displayed after the image on web page.
+     */
     function updateSpecialtyList()
     {
         var specialtyDatalist=document.getElementById('specialty');
@@ -48,18 +67,21 @@ function SurgeonView()
             specialtyDatalist.appendChild(option);
         });
 
-        var specialtiesTab=document.getElementsByClassName('specialty-tab');
-        var widthOfSpecialty=100/surgeonModel.specialties.length;
+        var specialtiesPanel=document.getElementsByClassName('specialty-panel');
+        var widthOfSpecialtyTab=100/surgeonModel.specialties.length;
         for(var i =0;i<surgeonModel.specialties.length;i++){
             var specialtyDiv=document.createElement('div');
-            specialtyDiv.style="width:"+widthOfSpecialty+"%;";
+            specialtyDiv.style="width:"+widthOfSpecialtyTab+"%;";
             specialtyDiv.appendChild(document.createTextNode(surgeonModel.specialties[i]));
-            specialtiesTab[0].appendChild(specialtyDiv);
+            specialtiesPanel[0].appendChild(specialtyDiv);
         }
     }
+
+    /**
+     * This method populates surgeons table in web page
+     */
     function updateSurgeonTable()
     {
-        //update table
         var table_body=document.getElementById('surgeonsTableBody');
         while (table_body.firstChild) {
             table_body.removeChild(table_body.firstChild);
@@ -96,10 +118,15 @@ function SurgeonView()
             table_body.appendChild(row);
         }
     }
-    $("#filterButton").on("click", function() {
+
+    /**
+     * Handles search button click event.
+     */
+    function onSearchButtonClicked()
+    {
         var location = $("#location").val().toLowerCase();
         var specialty=$("input[name=specialty]").val();
-        var new_surgeons=[];
+        var searchResults=[];
         for(var s in surgeonModel.surgeons)
         {
             var surgeon=surgeonModel.surgeons[s];
@@ -108,12 +135,14 @@ function SurgeonView()
                 surgeon.state.toLowerCase()==location)
                 && (specialty==""|| surgeon.specialty==specialty))
             {
-                new_surgeons.push(surgeon)
+                searchResults.push(surgeon)
             }
         }
-        surgeonModel.filteredSurgeons=new_surgeons;
+        surgeonModel.filteredSurgeons=searchResults;
         updateSurgeonTable();
-    });
+    }
+
+    $("#searchButton").on("click", onSearchButtonClicked);
     populateModel();
 }
 

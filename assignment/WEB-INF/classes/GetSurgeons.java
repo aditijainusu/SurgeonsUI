@@ -2,6 +2,9 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+/**
+ * GetSurgeons is a HTTP servlet serveing "GET request" with Surgeons data as response
+ */
 public class GetSurgeons extends HttpServlet
 {
     public void doGet(HttpServletRequest request,HttpServletResponse response)
@@ -13,7 +16,7 @@ public class GetSurgeons extends HttpServlet
             String filePath=context.getRealPath("")+"/assignment.json";
             File file=new File(filePath);
             String mimeType = context.getMimeType(filePath);
-            // sets HTTP header
+            // sets HTTP header and content details
             response.setHeader("Content-Disposition", "filename=\"" + file.getName() + "\"");
             response.setContentType(mimeType);
             response.setContentLength((int)file.length());

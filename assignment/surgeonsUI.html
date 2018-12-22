@@ -5,35 +5,47 @@
 </head>
 <body>
 
+<!--Image banner on top of web page starts-->
 <img src="assignment-banner.png" style="width:100%" >
+<!--Image banner on top of web page ends-->
+
+<!--List of all specialties in a panel starts-->
 <div class="specialty-panel"></div>
+<!--List of all specialties in a panel ends-->
 
 <div class="heading-panel">
-    <div class="filter-form">
+
+    <!--Search Form Heading starts -->
+    <div class="search-form">
         <label class="heading-label">Find a da Vinci Surgeon</label>
         <br><br>
-        <label class="filter-form-label">Location</label>
+        <label class="search-form-label">Location</label>
     </div>
+    <!--Search form heading ends-->
 
-    <div class="filter-results-panel">
+    <!--Search results heading starts -->
+    <div class="search-results-panel">
         <label class="heading-label">Search Results</label>
     </div>
+    <!--Search results heading ends -->
 </div>
 
-<div class="filter-form">
+<!--Search form starts -->
+<div class="search-form">
     <input type="text" id="location" style="width:100%">
     <br><br>
-    <label class="filter-form-label">Surgical Speciality</label>
-    <input name="specialty" list="specialty" class="filter-form-specialty-text-box">
+    <label class="search-form-label">Surgical Speciality</label>
+    <input name="specialty" list="specialty" class="search-form-specialty-text-box">
     <datalist id="specialty">
     </datalist>
     <br/>
     <br>
-    <button type="button" id="filterButton">Search</button>
+    <button type="button" id="searchButton">Search</button>
 </div>
+<!--Search form ends-->
 
-
-<table class="filter-results-panel">
+<!--Results table starts-->
+<table class="search-results-panel">
     <thead><tr>
         <th>First Name</th><th>Last Name</th><th>City</th>
         <th>State</th><th>Specialty</th><th>Contact Surgeon</th>
@@ -41,9 +53,9 @@
     <tbody id="surgeonsTableBody">
     </tbody>
 </table>
+<!--Results table ends-->
 
-
-
+<!--For the page to load faster, js files are placed at the end of document -->
 <script src="jquery/jquery.min.js"></script>
 <script src='scripts/Surgeon.js'></script>
 <script src='scripts/service/Service.js'></script>

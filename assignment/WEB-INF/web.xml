@@ -15,7 +15,7 @@
 
     <servlet-mapping>
         <servlet-name>GetSurgeons</servlet-name>
-        <url-pattern>/getData</url-pattern>
+        <url-pattern>/getSurgeons</url-pattern>
     </servlet-mapping>
 
 
